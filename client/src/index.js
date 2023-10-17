@@ -8,11 +8,18 @@ import Desktop6 from "./Desktop6";
 import Desktop7 from "./Desktop7";
 import Desktop8 from "./Desktop8";
 import Login from "./Login";
+import {Route,BrowserRouter,Switch} from "react-router-dom"
 
 
 function App (){
     return (
         <>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/"><Login/></Route>
+                <Route path="/home"><Desktop/></Route>
+            </Switch>
+        </BrowserRouter>
        
        
         </>

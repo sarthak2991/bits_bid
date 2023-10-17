@@ -1,86 +1,47 @@
 import React from 'react'
-
+import "./desktop.css"
+import stationary from "./assets/stationary.png"
+import essential from "./assets/essential.png"
+import electrical_a from "./assets/electrical_appliances.png"
+import fashion from "./assets/fashion.png"
+import electrical_g from "./assets/electrical_gadgets.png"
+import decor from "./assets/decor.png"
+import sports from "./assets/sports.png"
+import gym from "./assets/gym.png"
+import forward from "./assets/Forward.png"
+import search from "./assets/Search.png"
+import home from "./assets/Home.png"
+import chat from "./assets/Speech Bubble.png"
+import heart from "./assets/Heart.png"
+import cart from "./assets/Shopping Cart.png"
+import euro from "./assets/Euro Money.png"
+import settings from "./assets/Settings.png"
+import account from "./assets/Account.png"
 
 const Desktop = () => {
+  const choices = ["Stationary Supplies","Essentials","Electrical Appliances","Fashion","Electronic Gadgets","Sports Equipments","Room Decor","Gym Supplies"]
+  const images = [stationary,essential,electrical_a,fashion,electrical_g,sports,decor,gym]
+  const icons = [search,home,chat,heart,cart,euro,settings,account]
   return (
     <div className="desktop">
-    <div className="div">
-      <div className="overlap">
-        <div className="group">
-          <div className="overlap-group">
-            <div className="rectangle" />
-            <img className="img" alt="Rectangle" src="rectangle-24.svg" />
+      
+    <div className="homediv">
+   
+      {choices.map((index,key)=>{
+        
+        return (<div key={key} className="homeoverlap">
+        <div className="homegroup">
+          <div className="homeoverlap-group">
+            <div className="homerectangle" />
+            <img className="homeimg" alt="Rectangle" src={images[key]} />
           </div>
         </div>
-        <div className="text-wrapper">Stationary Supplies</div>
-      </div>
-      <div className="overlap-2">
-        <div className="group">
-          <div className="overlap-group">
-            <div className="rectangle" />
-            <img className="img" alt="Rectangle" src="image.svg" />
-          </div>
-        </div>
-        <div className="text-wrapper">Essentials</div>
-      </div>
-      <div className="overlap-3">
-        <div className="group">
-          <div className="overlap-group">
-            <div className="rectangle" />
-            <img className="img" alt="Rectangle" src="rectangle-24-2.svg" />
-          </div>
-        </div>
-        <div className="text-wrapper">Electrical Appliances</div>
-      </div>
-      <div className="overlap-4">
-        <div className="group">
-          <div className="overlap-group">
-            <div className="rectangle" />
-            <img className="img" alt="Rectangle" src="rectangle-24-3.svg" />
-          </div>
-        </div>
-        <div className="text-wrapper">Fashion</div>
-      </div>
-      <div className="overlap-5">
-        <div className="group">
-          <div className="overlap-group">
-            <div className="rectangle" />
-            <img className="img" alt="Rectangle" src="rectangle-24-4.svg" />
-          </div>
-        </div>
-        <div className="text-wrapper">Electronic Gadgets</div>
-      </div>
-      <div className="overlap-6">
-        <div className="group">
-          <div className="overlap-group">
-            <div className="rectangle-2" />
-            <img className="img" alt="Rectangle" src="rectangle-24-5.svg" />
-          </div>
-        </div>
-        <div className="text-wrapper">Sports Equipments</div>
-      </div>
-      <div className="overlap-7">
-        <div className="group">
-          <div className="overlap-group">
-            <div className="rectangle" />
-            <img className="img" alt="Rectangle" src="rectangle-24-6.svg" />
-          </div>
-        </div>
-        <div className="text-wrapper">Room Decor</div>
-      </div>
-      <div className="overlap-8">
-        <div className="group">
-          <div className="overlap-group">
-            <div className="rectangle" />
-            <img className="img" alt="Rectangle" src="rectangle-24-7.svg" />
-          </div>
-        </div>
-        <div className="text-wrapper">Gym Supplies</div>
-      </div>
-      <div className="rectangle-wrapper">
-        <div className="rectangle-3" />
-      </div>
-      <img className="forward" alt="Forward" src="forward.png" />
+        <div className="hometext-wrapper">{index}</div>
+      </div>)})}
+      
+      
+       <div className='navbar'><img className="forward" alt="Forward" src={forward} /><input className='homeSearch'></input>{icons.map((index,key) => { return (<img key={key} className="homeicon" alt="search" src={index} />)})}</div>
+    
     </div>
   </div>
 );
