@@ -1,15 +1,14 @@
 import React from "react";
 import  ReactDOM  from "react-dom";
-import Desktop from "./Desktop";
-import Desktop3 from "./Desktop3";
-import Desktop4 from "./Desktop4";
-import Desktop5 from "./Desktop5";
-import Desktop6 from "./Desktop6";
-import Desktop7 from "./Desktop7";
-import Desktop8 from "./Desktop8";
+import Desktop from "./Home";
+import Desktop3 from "./Item";
+
+import Desktop5 from "./Payment";
+import Desktop6 from "./Bid";
+
 import Login from "./Login";
 import {Route,BrowserRouter,Switch} from "react-router-dom"
-
+import "./index.css"
 
 function App (){
     return (
@@ -18,6 +17,9 @@ function App (){
             <Switch>
                 <Route exact path="/"><Login/></Route>
                 <Route path="/home"><Desktop/></Route>
+                <Route path="/item"><Desktop3/></Route>
+                <Route path="/bid"><Desktop6/></Route>
+                <Route path="/payment"><Desktop5/></Route>
             </Switch>
         </BrowserRouter>
        
