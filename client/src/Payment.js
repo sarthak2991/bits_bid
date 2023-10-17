@@ -1,6 +1,6 @@
 import React from 'react'
 import currency from "./assets/Group.png"
-
+import menu from "./assets/Menu.png"
 
 const Desktop5 = () => {
   return (
@@ -78,7 +78,7 @@ const Desktop5 = () => {
       <div className="text-wrapper-14">About us</div>
       <div className="text-wrapper-15">Privacy policy</div>
       <div className="text-wrapper-16">Contact Us</div>
-      <img className="menu" alt="Menu" src="menu.png" />
+      <img className="menu" alt="Menu" src={menu} />
     </div>
   </div>
 

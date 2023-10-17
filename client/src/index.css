@@ -160,7 +160,7 @@
   .desktop .text-wrapper {
     color: #000000;
     font-family: "Outfit-ExtraBold", Helvetica;
-    font-size: 12.5rem; /* 200px converted to rem */
+    font-size: 11rem; /* 200px converted to rem */
     font-weight: 800;
     left: 29.88rem; /* 478px converted to rem */
     letter-spacing: 0;
@@ -195,9 +195,14 @@
     position: absolute;
     top: 51.13rem; /* 818px converted to rem */
     width: 46.63rem; /* 746px converted to rem */
+    background-color: inherit;
   }
   
   .desktop .rectangle-2 {
+    color: #ffffff;
+    font-family: "Outfit-Bold", Helvetica;
+    font-size: 1.5rem; /* 24px converted to rem */
+    font-weight: 700;
     background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(101.93, 101.64, 94.71) 100%);
     border: 0px none;
     border-radius: 3.13rem; /* 50px converted to rem */
@@ -209,6 +214,10 @@
   }
   
   .desktop .rectangle-3 {
+    color: #ffffff;
+    font-family: "Outfit-Bold", Helvetica;
+    font-size: 1.5rem; /* 24px converted to rem */
+    font-weight: 700;
     background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(101.93, 101.64, 94.71) 100%);
     border: 0px none;
     border-radius: 3.44rem; /* 50px converted to rem */
@@ -280,34 +289,6 @@
     width: 22.25rem; /* 356px converted to rem */
   }
   
-  .desktop .text-wrapper-6 {
-    color: #ffffff;
-    font-family: "Outfit-Bold", Helvetica;
-    font-size: 1.5rem; /* 24px converted to rem */
-    font-weight: 700;
-    left: 50.63rem; /* 810px converted to rem */
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 53.63rem; /* 858px converted to rem */
-    white-space: nowrap;
-    width: 4.56rem; /* 73px converted to rem */
-  }
-  
-  .desktop .text-wrapper-7 {
-    color: #ffffff;
-    font-family: "Outfit-Bold", Helvetica;
-    font-size: 1.5rem; /* 24px converted to rem */
-    font-weight: 700;
-    left: 49.56rem; /* 793px converted to rem */
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 59.5rem; /* 952px converted to rem */
-    white-space: nowrap;
-    width: 6rem; /* 96px converted to rem */
-  }
   
   .desktop .text-wrapper-8 {
     color: #000000;

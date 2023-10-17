@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 /* import { IconComponentNode } from "./IconComponentNode";
 import { MobileAppStoreBadges } from "./MobileAppStoreBadges"; */
 import bubble from "./assets/Bubble.png"
-import girl from "./assets/Girl.jpeg"
+import girl from "./assets/Girl.png"
 import logo from "./assets/Logo-1.png"
 const Login = () => {
+  const [id,setId] = useState('')
+  const [loggedin,setLoggedin] = useState(false)
+ 
   return ( <div className="desktop">
   <div className="overlap-wrapper">
     <div className="overlap">
@@ -50,8 +53,8 @@ const Login = () => {
         <div className="text-wrapper-3">About us</div>
         <div className="text-wrapper-4">Privacy policy</div>
         <div className="text-wrapper-5">to the Community!</div>
-        <div className="text-wrapper-6">Login</div>
-        <div className="text-wrapper-7">Sign-up</div>
+        <button className="rectangle-3" >Login</button>
+        <button className="rectangle-2">Sign-up</button>
         <div className="text-wrapper-8">New user?</div>
         <div className="text-wrapper-9">Welcome back!</div>
         <img className="three-glass-bubbles" alt="Three glass bubbles" src={bubble} />
