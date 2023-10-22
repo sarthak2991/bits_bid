@@ -374,6 +374,8 @@
     width: 14.5rem; /* 232px / 16px */
     margin-right: 2rem;
     margin-bottom: 2rem;
+    border-radius: 2.5rem;
+    cursor: pointer;
     
   }
   

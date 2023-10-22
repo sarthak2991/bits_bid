@@ -32,7 +32,7 @@ const Desktop = () => {
    
       {choices.map((index,key)=>{
         
-        return (<div key={key} className="homeoverlap">
+        return (<button key={key} className="homeoverlap">
         <div className="homegroup">
           <div className="homeoverlap-group">
             <div className="homerectangle" />
@@ -40,7 +40,7 @@ const Desktop = () => {
           </div>
         </div>
         <div className="hometext-wrapper">{index}</div>
-      </div>)})}
+      </button>)})}
       
       <img className="forward" alt="Forward" src={forward} />
       <div className="group-2">
