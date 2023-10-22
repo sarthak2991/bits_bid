@@ -62,7 +62,7 @@ const Desktop3 = () => {
         </div>
           <img className="search" alt="Search" src={search} />
         </div>
-        <img className="home" alt="Home" src={home} />
+        <a href='/home'><img className="home" alt="Home" src={home} /></a>
         <img className="heart" alt="Heart" src={heart} />
         <img className="shopping-cart" alt="Shopping cart" src={cart} />
         <img className="speech-bubble" alt="Speech bubble" src={chat} />

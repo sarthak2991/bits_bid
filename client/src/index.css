@@ -211,6 +211,7 @@
     position: absolute;
     top: 59rem; /* 945px converted to rem */
     width: 13.69rem; /* 219px converted to rem */
+    cursor: pointer;
   }
   
   .desktop .rectangle-3 {
@@ -226,6 +227,7 @@
     position: absolute;
     top: 53.19rem; /* 851px converted to rem */
     width: 13.94rem; /* 223px converted to rem */
+    cursor: pointer;
   }
   
   .desktop .mobile-app-store {
@@ -262,7 +264,7 @@
   .desktop .text-wrapper-4 {
     color: #000000;
     font-family: "Roboto-CondensedRegular", Helvetica;
-    font-size: 1.38; /* 120px converted to rem */
+    font-size: 1.38rem; /* 120px converted to rem */
     font-weight: 400;
     left: 31.19rem; /* 499px converted to rem */
     letter-spacing: 0;

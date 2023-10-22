@@ -21,8 +21,11 @@ import account from "./assets/Account.png"
 const Desktop = () => {
   const choices = ["Stationary Supplies","Essentials","Electrical Appliances","Fashion","Electronic Gadgets","Sports Equipments","Room Decor","Gym Supplies"]
   const images = [stationary,essential,electrical_a,fashion,electrical_g,sports,decor,gym]
-  
+  const loggedin = localStorage.getItem("loggedin")
   return (
+    <>{
+      (loggedin)?(
+    
     <div className="homedesktop">
       
     <div className="homediv">
@@ -45,7 +48,7 @@ const Desktop = () => {
           <input className='search-bar' placeholder='What are you looking for?' style={{fontSize:'2rem'}}></input>
           <img className="search" alt="Search" src={search} />
         </div>
-        <img className="home" alt="Home" src={home} />
+        <a href='/home'><img className="home" alt="Home" src={home} /></a>
         <img className="heart" alt="Heart" src={heart} />
         <img className="shopping-cart" alt="Shopping cart" src={cart} />
         <img className="speech-bubble" alt="Speech bubble" src={chat} />
@@ -56,7 +59,7 @@ const Desktop = () => {
         </div>
       </div>
     </div>
-  </div>
+  </div>):(<>{window.location.href="/"}</>)}</>
 );
 
  

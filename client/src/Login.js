@@ -5,11 +5,46 @@ import { MobileAppStoreBadges } from "./MobileAppStoreBadges"; */
 import bubble from "./assets/Bubble.png"
 import girl from "./assets/Girl.png"
 import logo from "./assets/Logo-1.png"
+
+import axios from "axios"
+import jwtDecode from "jwt-decode"
+
+import {GoogleOAuthProvider, useGoogleLogin} from "@react-oauth/google"
 const Login = () => {
   const [id,setId] = useState('')
   const [loggedin,setLoggedin] = useState(false)
- 
+  const login = useGoogleLogin({
+    onSuccess: tokenResponse => {
+      
+    const userInfoEndpoint = "https://www.googleapis.com/oauth2/v3/userinfo";
+
+       axios.get(userInfoEndpoint,{headers:{Authorization:`Bearer ${tokenResponse.access_token}`}}).then(
+        (res)=>{const userData = res.data
+          if(userData.hd === 'hyderabad.bits-pilani.ac.in'){
+            setId(userData.email.slice(0,9))
+            setLoggedin(true)
+            localStorage.setItem("id",id);
+            localStorage.setItem("loggedin",loggedin)
+            window.location.href = "/home"
+
+            
+          }
+            else{alert('Please use your bits mail to login')}
+        
+        
+        }
+       )
+
+
+    },
+    onError:() => {
+      alert('Login Failed');
+    },
+   
+
+  });
   return ( <div className="desktop">
+    {localStorage.clear()}
   <div className="overlap-wrapper">
     <div className="overlap">
       <div className="overlap-group">
@@ -53,8 +88,10 @@ const Login = () => {
         <div className="text-wrapper-3">About us</div>
         <div className="text-wrapper-4">Privacy policy</div>
         <div className="text-wrapper-5">to the Community!</div>
-        <button className="rectangle-3" >Login</button>
-        <button className="rectangle-2">Sign-up</button>
+        
+        <button className="rectangle-3" onClick={()=>login()} >Login</button>
+        <button className="rectangle-2" onClick={()=>login()}>Sign-up</button>
+        
         <div className="text-wrapper-8">New user?</div>
         <div className="text-wrapper-9">Welcome back!</div>
         <img className="three-glass-bubbles" alt="Three glass bubbles" src={bubble} />
