@@ -67,7 +67,7 @@ const Desktop6 = () => {
             <a href='/home'><img className="home" alt="Home" src={home} /></a>
             <img className="heart" alt="Heart" src={heart} />
             <img className="shopping-cart" alt="Shopping cart" src={cart} />
-            <img className="speech-bubble" alt="Speech bubble" src={chat} />
+            <a href='/chat'><img className="speech-bubble" alt="Speech bubble" src={chat} /></a>
             <img className="euro-money" alt="Euro money" src={euro} />
             <img className="settings" alt="Settings" src={settings} />
             <div className="account-wrapper">
