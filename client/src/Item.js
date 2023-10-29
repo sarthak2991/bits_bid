@@ -83,7 +83,7 @@ const Desktop3 = () => {
           <img className="rectangle-8" alt="Rectangle" src="rectangle-24-2.svg" />
         </div>
       </div>
-      <img className="forward-2" alt="Forward" src={forward} />
+      <a href="/home"><img className="forward-2" alt="Forward" src={forward} /></a>
     </div>
   </div>
 

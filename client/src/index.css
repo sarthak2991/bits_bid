@@ -2469,14 +2469,14 @@
   }
   
   .chatpage_desktop .rectangle-6 {
-    background-color: #d9d9d933;
+    
     border-radius: 3.375rem;
     height: 2.6875rem;
     left: 0;
     position: absolute;
     top: 0;
     width: 33.6875rem;
-    text-align: center;
+    padding-left: 1rem;
   }
   
   .chatpage_desktop .text-wrapper-5 {
@@ -2525,7 +2525,7 @@
     height: 37.1875rem;
     left: 9rem;
     position: absolute;
-    top: 20.125rem;
+    top: 10.125rem;
     width: 34.75rem;
   }
   
@@ -2682,10 +2682,10 @@
   }
   
   .chatpage_desktop .heart {
-    height: 2rem;
-    left: 66.4375rem;
+    height: 1.75rem;
+    left: 65.4375rem;
     position: absolute;
-    top: 1rem;
+    top: 1.125rem;
     width: 2.875rem;
   }
   
@@ -2693,23 +2693,23 @@
     height: 1.9375rem;
     left: 69.6875rem;
     position: absolute;
-    top: 1rem;
+    top: 1.125rem;
     width: 1.875rem;
   }
   
   .chatpage_desktop .speech-bubble {
     height: 1.75rem;
-    left: 64.4375rem;
+    left: 62.4375rem;
     position: absolute;
     top: 1.125rem;
-    width: 1.3125rem;
+    width: 1.875rem;
   }
   
   .chatpage_desktop .euro-money {
     height: 1.9375rem;
     left: 73rem;
     position: absolute;
-    top: 0.9375rem;
+    top: 1.125rem;
     width: 2.6875rem;
   }
   
@@ -2717,26 +2717,26 @@
     height: 2.1875rem;
     left: 76.5rem;
     position: absolute;
-    top: 0.625rem;
+    top: 1.125rem;
     width: 1.875rem;
   }
   
   .chatpage_desktop .account-wrapper {
     background-color: #ffe03f;
     border-radius: 1.875rem;
-    height: 3.75rem;
-    left: 81.0625rem;
+    height: 3.5rem;
+    left: 80.0625rem;
     position: absolute;
     top: 0.25rem;
-    width: 3.75rem;
+    width: 3.5rem;
   }
   
   .chatpage_desktop .account {
     height: 2.8125rem;
-    left: 0.1875rem;
+    left: 0.275rem;
     position: absolute;
     top: 0.5rem;
-    width: 2.0625rem;
+    width: 2.8125rem;
   }
   
   .chatpage_desktop .forward {

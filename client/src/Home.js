@@ -42,7 +42,7 @@ const Desktop = () => {
         <div className="hometext-wrapper">{index}</div>
       </button>)})}
       
-      <img className="forward" alt="Forward" src={forward} />
+     
       <div className="group-2">
         <div className="overlap-3" >
           <input className='search-bar' placeholder='What are you looking for?' style={{fontSize:'2rem'}}></input>
