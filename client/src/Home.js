@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from "axios"
 
 import stationary from "./assets/stationary.png"
 import essential from "./assets/essential.png"
@@ -22,6 +23,7 @@ const Desktop = () => {
   const choices = ["Stationary Supplies","Essentials","Electrical Appliances","Fashion","Electronic Gadgets","Sports Equipments","Room Decor","Gym Supplies"]
   const images = [stationary,essential,electrical_a,fashion,electrical_g,sports,decor,gym]
   const loggedin = localStorage.getItem("loggedin")
+  const [searchItem,setSearch] = useState('')
   return (
     <>{
       (loggedin)?(
@@ -45,7 +47,7 @@ const Desktop = () => {
      
       <div className="group-2">
         <div className="overlap-3" >
-          <input className='search-bar' placeholder='What are you looking for?' style={{fontSize:'2rem'}}></input>
+          <input className='search-bar' value={searchItem} onChange={(e)=>{setSearch(e.target.value)}} onKeyUp={(e)=>{if(e.key === "Enter"){axios.post("./searchitem",{searchItem},{headers:{}}).then()}}} placeholder='What are you looking for?' style={{fontSize:'2rem'}}></input>
           <img className="search" alt="Search" src={search} />
         </div>
         <a href='/home'><img className="home" alt="Home" src={home} /></a>

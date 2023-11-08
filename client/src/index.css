@@ -1181,7 +1181,7 @@
 }
 
 .biddesktop .text-wrapper-2 {
-    color: #9c9c9c;
+    
     font-family: "Outfit-Regular", Helvetica;
     font-size: 1.625rem;
     font-weight: 400;
@@ -1191,6 +1191,8 @@
     position: absolute;
     top: 0.8125rem;
     width: 14.5625rem;
+    height: 3rem;
+    border-radius: 0.7rem;
 }
 
 
@@ -1235,7 +1237,7 @@
   
   .biddesktop .img {
     height: 1.3125rem; /* 21px to rem */
-    left: 10.375rem; /* 166px to rem */
+    left: 10.75rem; /* 166px to rem */
     position: absolute;
     top: 1.25rem; /* 20px to rem */
     width: 1.375rem; /* 22px to rem */
@@ -1245,7 +1247,7 @@
     height: 3.625rem; /* 58px to rem */
     left: 35.5625rem; /* 569px to rem */
     position: absolute;
-    top: 16.75rem; /* 268px to rem */
+    top: 16.25rem; /* 268px to rem */
     width: 17.6875rem; /* 283px to rem */
   }
   
@@ -1259,9 +1261,9 @@
     background-color: #fff6cb;
     border: 0;
     border-radius: 3.125rem; /* 50px to rem */
-    box-shadow: 0 0.25rem 0.25rem transparent;
     height: 3.625rem; /* 58px to rem */
     left: 0;
+    box-shadow: 0 0.25rem 0.25rem transparent;
     position: absolute;
     top: 0;
     width: 17.3125rem; /* 277px to rem */
@@ -1312,7 +1314,7 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 0.8125rem; /* 13px to rem */
+    top: 0rem; /* 13px to rem */
     width: 18.9375rem; /* 303px to rem */
   }
   
@@ -1569,8 +1571,8 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 27.25rem; /* 436px to rem */
-    width: 51.75rem; /* 828px to rem */
+    top: 26.25rem; /* 436px to rem */
+    width: auto; /* 828px to rem */
   }
   
   .biddesktop .forward {

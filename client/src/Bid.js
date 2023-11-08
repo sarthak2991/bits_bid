@@ -21,7 +21,7 @@ const Desktop6 = () => {
       <div className="overlap-group">
         <p className="text-wrapper">At what price would you like to buy this product?</p>
         <div className="div-wrapper">
-          <div className="text-wrapper-2">Enter your amount</div>
+          <input className='text-wrapper-2' placeholder='Enter your amount'></input>
         </div>
         <div className="group">
           <div className="overlap-group-2">

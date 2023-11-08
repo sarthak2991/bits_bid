@@ -11,8 +11,7 @@ import jwtDecode from "jwt-decode"
 
 import {GoogleOAuthProvider, useGoogleLogin} from "@react-oauth/google"
 const Login = () => {
-  const [id,setId] = useState('')
-  const [loggedin,setLoggedin] = useState(false)
+
   const login = useGoogleLogin({
     onSuccess: tokenResponse => {
       
@@ -21,10 +20,11 @@ const Login = () => {
        axios.get(userInfoEndpoint,{headers:{Authorization:`Bearer ${tokenResponse.access_token}`}}).then(
         (res)=>{const userData = res.data
           if(userData.hd === 'hyderabad.bits-pilani.ac.in'){
-            setId(userData.email.slice(0,9))
-            setLoggedin(true)
+            const id = userData.email.slice(0,9)
+            const loggedin = true
             localStorage.setItem("id",id);
             localStorage.setItem("loggedin",loggedin)
+
             window.location.href = "/home"
 
             
