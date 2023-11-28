@@ -10,6 +10,8 @@ import {Route,BrowserRouter,Switch} from "react-router-dom"
 import "./index.css"
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Chatpage from "./Chatpage";
+import Details from "./Details";
+import Profile from "./Profile";
 
 function App (){
     return (
@@ -22,6 +24,8 @@ function App (){
                 <Route path="/bid"><Desktop6/></Route>
                 <Route path="/payment"><Desktop5/></Route>
                 <Route path="/chat"><Chatpage/></Route>
+                <Route path="/details"><Details/></Route>
+                <Route path="/profile"><Profile/></Route>
             </Switch>
         </BrowserRouter>
        

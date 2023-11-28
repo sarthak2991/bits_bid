@@ -20,10 +20,12 @@ import settings from "./assets/Settings.png"
 import account from "./assets/Account.png"
 
 const Desktop = () => {
-  const choices = ["Stationary Supplies","Essentials","Electrical Appliances","Fashion","Electronic Gadgets","Sports Equipments","Room Decor","Gym Supplies"]
-  const images = [stationary,essential,electrical_a,fashion,electrical_g,sports,decor,gym]
+  const[choices,setChoice] = useState(["Stationary Supplies","Essentials","Electrical Appliances","Fashion","Electronic Gadgets","Sports Equipments","Room Decor","Gym Supplies"])
+  const [images,setImages] = useState([stationary,essential,electrical_a,fashion,electrical_g,sports,decor,gym])
   const loggedin = localStorage.getItem("loggedin")
+  const token = localStorage.getItem('token')
   const [searchItem,setSearch] = useState('')
+  
   return (
     <>{
       (loggedin)?(
@@ -31,10 +33,9 @@ const Desktop = () => {
     <div className="homedesktop">
       
     <div className="homediv">
-   
-      {choices.map((index,key)=>{
+   {(choices.length === 0)?(<div className='homeoverlap' style={{'fontSize':'2rem'}}>No results to display</div>):(<>{choices.map((index,key)=>{
         
-        return (<button key={key} className="homeoverlap">
+        return (<button  key={key} className="homeoverlap">
         <div className="homegroup">
           <div className="homeoverlap-group">
             <div className="homerectangle" />
@@ -43,11 +44,12 @@ const Desktop = () => {
         </div>
         <div className="hometext-wrapper">{index}</div>
       </button>)})}
+      </>)}
       
      
       <div className="group-2">
         <div className="overlap-3" >
-          <input className='search-bar' value={searchItem} onChange={(e)=>{setSearch(e.target.value)}} onKeyUp={(e)=>{if(e.key === "Enter"){axios.post("./searchitem",{searchItem},{headers:{}}).then()}}} placeholder='What are you looking for?' style={{fontSize:'2rem'}}></input>
+          <input className='search-bar' value={searchItem} onChange={(e)=>{setSearch(e.target.value)}} onKeyUp={(e)=>{if(e.key === "Enter"){axios.get("http://localhost:8080/api/v1/products/search?name="+searchItem,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{setChoice(res.data.result); setSearch('')})}}} placeholder='What are you looking for?' style={{fontSize:'2rem'}}></input>
           <img className="search" alt="Search" src={search} />
         </div>
         <a href='/home'><img className="home" alt="Home" src={home} /></a>
@@ -57,7 +59,7 @@ const Desktop = () => {
         <img className="euro-money" alt="Euro money" src={euro} />
         <img className="settings" alt="Settings" src={settings} />
         <div className="account-wrapper">
-          <img className="account" alt="Account" src={account} />
+          <a href='/profile'><img className="account" alt="Account" src={account} /></a>
         </div>
       </div>
     </div>

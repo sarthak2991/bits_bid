@@ -71,7 +71,7 @@ const Desktop6 = () => {
             <img className="euro-money" alt="Euro money" src={euro} />
             <img className="settings" alt="Settings" src={settings} />
             <div className="account-wrapper">
-              <img className="account" alt="Account" src={account} />
+              <a href='/profile'><img className="account" alt="Account" src={account} /></a>
             
 
             </div>

@@ -19,14 +19,43 @@ const Login = () => {
 
        axios.get(userInfoEndpoint,{headers:{Authorization:`Bearer ${tokenResponse.access_token}`}}).then(
         (res)=>{const userData = res.data
+          
           if(userData.hd === 'hyderabad.bits-pilani.ac.in'){
-            const id = userData.email.slice(0,9)
+            const username = userData.email.slice(0,9)
             const loggedin = true
-            localStorage.setItem("id",id);
+            const email = userData.email
+            const name = userData.name
+            localStorage.setItem("username",username);
+            localStorage.setItem("name",userData.name)
+            localStorage.setItem("email",userData.email)
             localStorage.setItem("loggedin",loggedin)
-
-            window.location.href = "/home"
-
+            const password = "1"
+            
+             axios.post("http://localhost:8080/api/v1/users/sign_in",{username,password}).then((res)=>{
+              if(res.data.hasOwnProperty('msg')){
+                axios.post("http://localhost:8080/api/v1/users/sign_up",{email,username,name,password}).then((res)=>{
+              if(res.data.hasOwnProperty('result')){
+                window.location.href = "/"
+              }
+              else{
+                  window.location.href = "/details"
+              }
+            })}
+            
+              
+              else{
+                localStorage.setItem('id',res.data.result.user.id)
+                localStorage.setItem('balance',res.data.result.user.balance)
+                localStorage.setItem('phone',res.data.result.user.contactNo)
+                
+                localStorage.setItem('hostel',res.data.result.user.hostel)
+                localStorage.setItem('token',res.data.result.accessToken)
+                window.location.href = "/home"
+              }
+            })
+            
+            //window.location.href = "/home"
+ 
             
           }
             else{alert('Please use your bits mail to login')}

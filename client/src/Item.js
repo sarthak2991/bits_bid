@@ -44,7 +44,7 @@ const Desktop3 = () => {
         <img className="image" alt="Image" src="image-1.png" />
       </div>
       <div className="div-wrapper">
-        <div className="text-wrapper-4">Chat with Seller</div>
+        <button className="text-wrapper-4" >Chat with Seller</button>
       </div>
       <div className="add-to-cart-start-wrapper">
         <p className="add-to-cart-start">Add to Cart&nbsp;&nbsp;&amp; Start Bidding</p>
@@ -69,7 +69,7 @@ const Desktop3 = () => {
         <img className="euro-money" alt="Euro money" src={euro} />
         <img className="settings" alt="Settings" src={settings} />
         <div className="account-wrapper">
-          <img className="account" alt="Account" src={account} />
+          <a href='/profile'><img className="account" alt="Account" src={account} /></a>
         </div>
       </div>
       <img className="rectangle-4" alt="Rectangle" src="rectangle-24.svg" />

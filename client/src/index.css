@@ -2476,7 +2476,7 @@
     height: 2.6875rem;
     left: 0;
     position: absolute;
-    top: 0;
+    top: 44rem;
     width: 33.6875rem;
     padding-left: 1rem;
   }
@@ -2783,3 +2783,198 @@
     white-space: nowrap;
     width: 0.6875rem;
   }
+
+  .unsplash5dd7-l4a4uw-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120rem;
+    height: 80rem;
+    object-fit: cover;
+  }
+  .desktop-9-child,
+  .desktop-9-item {
+    position: absolute;
+    left: 22.44rem;
+    width: 45.13rem;
+  }
+  .desktop-9-child {
+    top: 5.06rem;
+    border-radius: 30px;
+    background-color: rgba(255, 221, 0, 0.36);
+    backdrop-filter: blur(19.6px);
+    border: 1px solid rgba(255, 221, 0, 0.1);
+    box-sizing: border-box;
+    height: 53.81rem;
+  }
+  .desktop-9-item {
+    top: 5rem;
+    border-radius: 20px;
+    height: 39.25rem;
+  }
+  .desktop-9-inner {
+    position: absolute;
+    top: 6.13rem;
+    left: 42.69rem;
+    width: 4.67rem;
+    height: 4.7rem;
+    object-fit: cover;
+  }
+  .search-bar-4,
+  .search-bar-5 {
+    border: 0;
+    background-color: white;
+    position: absolute;
+    width: 30%;
+  }
+  .search-bar-4 {
+    font-family: Outfit;
+    font-size: 1.38rem;
+    height: 4.43%;
+  width: 30%;
+    top: 22.56%;
+    right: 28.82%;
+    bottom: 73.02%;
+    left: 28.89%;
+  }
+  .search-bar-5 {
+    top: 29.39%;
+    right: 28.89%;
+    bottom: 66.18%;
+    left: 28.82%;
+    width: 30%;
+  }
+  .search-bar-5,
+  .search-bar-6,
+  .search-bar-7 {
+    font-family: Outfit;
+    font-size: 1.38rem;
+    height: 4.43%;
+    width: 30%;
+  }
+  .search-bar-6 {
+    border: 0;
+    background-color: white;
+    position: absolute;
+    top: 36.23%;
+    right: 28.96%;
+    bottom: 59.34%;
+    left: 28.75%;
+    width: 30%;
+  }
+  .search-bar-7 {
+    top: 43.07%;
+    right: 29.03%;
+    bottom: 52.51%;
+    left: 28.68%;
+    width: 30%;
+  }
+  .group-child,
+  .search-bar-7,
+  .search-bar-8 {
+    border: 0;
+    background-color: white;
+    position: absolute;
+  }
+  .search-bar-8 {
+    font-family: Outfit;
+    font-size: 1.38rem;
+    height: 4.43%;
+    width: 30%%;
+    top: 49.9%;
+    right: 29.1%;
+    bottom: 45.67%;
+    left: 28.61%;
+  }
+  .group-child {
+    cursor: pointer;
+    padding: 0;
+    top: 0;
+    left: 0;
+  }
+  .sell {
+    position: absolute;
+    top: 5.2rem;
+    left: 5rem;
+    display: inline-block;
+    width: 2.81rem;
+    height: 1.63rem;
+  }
+  .rectangle-parent {
+    position: absolute;
+    top: 38.38rem;
+    left: 38.06rem;
+    width: 13.94rem;
+    height: 3.13rem;
+  }
+  .your-profile {
+    position: absolute;
+    top: 11.06rem;
+    left: 40rem;
+    display: inline-block;
+    width: 8.25rem;
+    height: 1.63rem;
+  }
+  .group-item {
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    border-radius: 50px;
+    background: linear-gradient(91.14deg, #000, #66665f);
+    width: 17rem;
+    height: 3.13rem;
+  }
+  .wallet-balance {
+    position: absolute;
+    top: 5rem;
+    left: 1rem;
+    font-size: 1.5rem;
+    display: inline-block;
+    font-family: Outfit;
+    color: #fff;
+    text-align: left;
+    width: 11.56rem;
+    height: 1.63rem;
+  }
+  .rectangle-group {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 43.06rem;
+    left: 37.88rem;
+  }
+  .your-orders {
+    position: absolute;
+    top: 5rem;
+    left: 3rem;
+    font-size: 1.5rem;
+    display: inline-block;
+    font-family: Outfit;
+    color: #fff;
+    text-align: left;
+    width: 8.81rem;
+    height: 1.63rem;
+  }
+  .rectangle-container {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 47.75rem;
+    left: 38.06rem;
+  }
+  .desktop-9 {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    height: 64rem;
+    overflow: hidden;
+    text-align: left;
+    font-size: 1.5rem;
+    color: #fff;
+    font-family: Outfit;
+  }
+  
