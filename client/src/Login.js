@@ -25,7 +25,7 @@ const Login = () => {
             localStorage.setItem("id",id);
             localStorage.setItem("loggedin",loggedin)
 
-            window.location.href = "./home"
+            window.location.href = "/home"
 
             
           }
