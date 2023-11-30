@@ -15,10 +15,10 @@ import java.util.Optional;
 
 @Repository
 public interface ProductsRepository extends JpaRepository<Product, Long> {
-  Page<Product> findBySellerId(Long sellerId, Pageable pageable);
+  List<Product> findBySellerId(Long sellerId);
 
-  Page<Product> findByCategoryId(Long categoryId, Pageable pageable);
-
+  List<Product> findByCategoryId(Long categoryId);
+  
   List<Product> findByNameStartingWith(String name);
 
   List<Product> findByStatus(Integer status);

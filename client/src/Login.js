@@ -20,7 +20,8 @@ const Login = () => {
        axios.get(userInfoEndpoint,{headers:{Authorization:`Bearer ${tokenResponse.access_token}`}}).then(
         (res)=>{const userData = res.data
           
-          if(userData.hd === 'hyderabad.bits-pilani.ac.in'){
+          if(userData.hd === 'hyderabad.bits-pilani.ac.in')
+          {
             const username = userData.email.slice(0,9)
             const loggedin = true
             const email = userData.email

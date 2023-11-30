@@ -13,6 +13,9 @@ import forward1 from "./assets/Forward (2).png"
 import currency from "./assets/Group.png"
 
 const Desktop3 = () => {
+  const productDetails = JSON.parse(localStorage.getItem('productdetails'))
+  //console.log(productDetails)
+  const handleClick =()=>{window.location.href="/bid"}
   return (
     <div className="itemdesktop">
     <div className="div">
@@ -22,24 +25,21 @@ const Desktop3 = () => {
           <p className="text">
             <span className="text-wrapper">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <span className="span">
-              &nbsp;&nbsp;799
+              &nbsp;&nbsp;{productDetails.price}
               <br />
               <span className='text-wrapper-3'>
-              -used for 7 months<br/>
-              -works fine<br/>
-              -intact body and wire<br/>
-              -warranty card included<br/>
-              -warranty till February 2024</span>
+              {productDetails.description}
+              </span>
             </span>
           </p>
           
         </div>
         <img className="group" alt="Group" src={currency} />
       </div>
-      <p className="p">Prestige PKGSS 1.7L 1500W Electric Kettle (Stainless Steel)</p>
+      <p className="p">{productDetails.name}</p>
       <div className="overlap-group">
         <div className="rectangle-2" />
-        <img className="forward" alt="Forward" src={forward1} />
+        <img className="forwardbutton" alt="Forward" src={forward1} />
         
         <img className="image" alt="Image" src="image-1.png" />
       </div>
@@ -47,13 +47,8 @@ const Desktop3 = () => {
         <button className="text-wrapper-4" >Chat with Seller</button>
       </div>
       <div className="add-to-cart-start-wrapper">
-        <p className="add-to-cart-start">Add to Cart&nbsp;&nbsp;&amp; Start Bidding</p>
+        <button className="add-to-cart-start" onClick={()=>{handleClick()}}>Start Bidding</button>
       </div>
-      <div className="overlap-2">
-        <div className="rectangle-3" />
-        <div className="text-wrapper-5">View More</div>
-      </div>
-      <img className="img" alt="Forward" src={forward1} />
       <div className="group-2">
         <div className="overlap-3">
           <div className="overlap-3" >
@@ -72,16 +67,12 @@ const Desktop3 = () => {
           <a href='/profile'><img className="account" alt="Account" src={account} /></a>
         </div>
       </div>
-      <img className="rectangle-4" alt="Rectangle" src="rectangle-24.svg" />
       <div className="group-5">
         <div className="rectangle-5" />
-        <img className="rectangle-6" alt="Rectangle" src="image.svg" />
       </div>
       <div className="overlap-wrapper">
         <div className="overlap-4">
-          <div className="rectangle-7" />
-          <img className="rectangle-8" alt="Rectangle" src="rectangle-24-2.svg" />
-        </div>
+          </div>
       </div>
       <a href="/home"><img className="forward-2" alt="Forward" src={forward} /></a>
     </div>

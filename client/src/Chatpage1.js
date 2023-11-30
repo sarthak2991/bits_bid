@@ -14,20 +14,20 @@ import account from "./assets/Account.png"
 import axios from 'axios'
 
 
-const Chatpage = () => {
+const Chatpage1 = () => {
   const [chathistory,setChathistory]= useState([])
   const token = localStorage.getItem('token')
-  useEffect(()=>{axios.get("http://localhost:8080/api/v1/chat/chats",{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{setChathistory(res.data.result)})},[])
-  const handleClick = (e)=>{
-    e.preventDefault()
-    
-    const details = e.target.innerText.split(',')
-    const userId=details[0].substring(details[0].indexOf(":")+1)
-    localStorage.setItem('userid',parseInt(userId))
-    const productId=details[1].substring(details[1].indexOf(":")+1)
-    localStorage.setItem('productid',parseInt(productId))
-    window.location.href="/personal"
-  }
+  const productID = localStorage.getItem('productid')
+  const sellerid = localStorage.getItem('userid')
+const userid = localStorage.getItem('id')
+  useEffect(()=>{axios.get("http://localhost:8080/api/v1/chat/"+productID+'/'+sellerid+'/get',{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+    if(res.data.hasOwnProperty('result')){
+       setChathistory(res.data.result)
+      }
+      else{
+        alert(res.data.msg)
+      }
+    })},[])
   return (
     <div className="chatpage_desktop">
       <div className="div">
@@ -45,11 +45,12 @@ const Chatpage = () => {
               <div className="overlap-7">
                 Your chats<hr/>
           
-      {chathistory.map((item,key)=>{const name = "user:"+item.user+','+ "productId:"+item.productId
-      
+      {chathistory.map((item,key)=>{
+       console.log(item.sender)
        return(
         <>
-        <button className='rectangle-6' onClick={(e)=>{handleClick(e)}} key={key}  >{name}</button><br/><br/><hr/>
+        {(item.sender === userid)?(<div  key={key}>{item.msg}</div>):(<div  style={{'textAlign':'right'}}   key={key}>{item.msg}<br/><br/></div>)}
+        
         </>
        )})}
                 </div>
@@ -90,4 +91,4 @@ const Chatpage = () => {
   )
 }
 
-export default Chatpage
+export default Chatpage1

@@ -26,6 +26,16 @@ const Desktop = () => {
   const token = localStorage.getItem('token')
   const [searchItem,setSearch] = useState('')
   
+  const handleClick =  (e) => {e.preventDefault();
+    const categoryId = choices.indexOf(e.target.alt)+1
+  //console.log(productId)
+  axios.get("http://localhost:8080/api/v1/products/?categoryId="+categoryId,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+    const products = JSON.stringify(res.data.result.products)
+    
+    localStorage.setItem('products',products)
+    window.location.href = "/product"
+  })
+  }
   return (
     <>{
       (loggedin)?(
@@ -35,11 +45,11 @@ const Desktop = () => {
     <div className="homediv">
    {(choices.length === 0)?(<div className='homeoverlap' style={{'fontSize':'2rem'}}>No results to display</div>):(<>{choices.map((index,key)=>{
         
-        return (<button  key={key} className="homeoverlap">
+        return (<button onClick={(e)=>{handleClick(e)}}  key={key} className="homeoverlap">
         <div className="homegroup">
           <div className="homeoverlap-group">
             <div className="homerectangle" />
-            <img className="homeimg" alt="Rectangle" src={images[key]} />
+            <img className="homeimg" alt={index} src={images[key]} />
           </div>
         </div>
         <div className="hometext-wrapper">{index}</div>

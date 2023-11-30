@@ -1,5 +1,5 @@
 .desktop {
-    background-color: #fefafb;
+    background-color:#ffd600;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -719,9 +719,21 @@
     line-height: normal;
     position: absolute;
     top: 9.375rem; /* 150px converted to rem */
-    width: 56.9375rem; /* 911px converted to rem */
+    width: 20rem; /* 911px converted to rem */
 }
 
+.itemdesktop .p1 {
+  color: #000000;
+  font-family: "Outfit-Regular", Helvetica;
+  font-size: 1.75rem; /* 32px converted to rem */
+  font-weight: 400;
+  left: 50.75rem; /* 412px converted to rem */
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 9.375rem; /* 150px converted to rem */
+  width: 40rem; /* 911px converted to rem */
+}
 
 
 .itemdesktop .overlap-group {
@@ -754,12 +766,19 @@
   
   .itemdesktop .forward {
     height: 2.125rem;
+    position: absolute;
+    width: 2.125rem;
+    right: 0.05rem;
+    bottom: 0.25rem;
+  }
+  .itemdesktop .forwardbutton {
+    height: 3.125rem;
     left: 18.75rem;
     position: absolute;
     top: 9.125rem;
     width: 2.125rem;
-  }
   
+  }
   .itemdesktop .ellipse {
     background-color: #252525;
     border-radius: 0.5rem;
@@ -802,13 +821,28 @@
   
   .itemdesktop .image {
     height: 14.3125rem;
-    left: 9.5rem;
+    left: 4.5rem;
     object-fit: cover;
     position: absolute;
     top: 3.5625rem;
     width: 13rem;
   }
-  
+  .itemdesktop .chooseimage {
+    height: 2rem;
+    left: 6.5rem;
+    object-fit: cover;
+    position: absolute;
+    top: 23rem;
+    width: 13rem;
+  }
+  .itemdesktop .upload {
+    height: 2rem;
+    left: 6.5rem;
+    object-fit: cover;
+    position: absolute;
+    top: 25rem;
+    width: 10rem;
+  }
   .itemdesktop .div-wrapper {
     background-color: #eabfff;
     border-radius: 3.125rem;
@@ -821,17 +855,17 @@
   }
   
   .itemdesktop .text-wrapper-4 {
-    color: #000000;
+   border-color: transparent;
     font-family: "Outfit-Medium", Helvetica;
     font-size: 1.875rem;
     font-weight: 500;
-    left: 20rem;
+    background-color: inherit;
+    left: 18rem;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 1.375rem;
-    width: 13.3125rem;
-  }
+    top: 1.05rem;
+   }
   
   .itemdesktop .add-to-cart-start-wrapper {
     background-color: #e9bfff;
@@ -845,7 +879,7 @@
   }
   
   .itemdesktop .add-to-cart-start {
-    color: #000000;
+    
     font-family: "Outfit-Medium", Helvetica;
     font-size: 1.875rem;
     font-weight: 500;
@@ -853,10 +887,12 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    
+    background-color: inherit;
+    border-color: transparent;
     white-space: nowrap;
-    width: 24.3125rem;
-  }
+    top: 1.05rem;
+    left: 18rem;
+    }
   
   .itemdesktop .overlap-2 {
     height: 3.625rem;
@@ -1163,7 +1199,7 @@
     font-family: "Outfit-Medium", Helvetica;
     font-size: 2rem;
     font-weight: 500;
-    left: 23.8125rem;
+    left: 30.8125rem;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
@@ -1174,7 +1210,7 @@
 .biddesktop .div-wrapper {
     background-size: 100% 100%;
     height: 4rem;
-    left: 35.5625rem;
+    left: 28.5625rem;
     position: absolute;
     top: 4.75rem;
     width: 17.3125rem;
@@ -1185,7 +1221,7 @@
     font-family: "Outfit-Regular", Helvetica;
     font-size: 1.625rem;
     font-weight: 400;
-    left: 1.875rem;
+    left: 2.875rem;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
@@ -1193,6 +1229,35 @@
     width: 14.5625rem;
     height: 3rem;
     border-radius: 0.7rem;
+}
+
+.biddesktop .submit {
+    
+  font-family: "Outfit-Regular", Helvetica;
+  font-size: 1.625rem;
+  font-weight: 400;
+  left: 18.875rem;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 0.8125rem;
+  width: 5.5625rem;
+  height: 3rem;
+  border-radius: 0.7rem;
+}
+.biddesktop .update {
+    
+  font-family: "Outfit-Regular", Helvetica;
+  font-size: 1.625rem;
+  font-weight: 400;
+  left: 25.875rem;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 0.8125rem;
+  width: 5.5625rem;
+  height: 3rem;
+  border-radius: 0.7rem;
 }
 
 
@@ -1657,6 +1722,8 @@
     width: 30.3125rem; /* Converted from 485px */
   }
   
+  
+
   .paymentdesktop .rectangle-3 {
     background-color: #ffd500;
     border: 0;
@@ -2468,6 +2535,8 @@
     position: absolute;
     top: 2.9375rem;
     width: 33.6875rem;
+    color: white;
+    font-size: large;
   }
   
   .chatpage_desktop .rectangle-6 {
@@ -2476,7 +2545,7 @@
     height: 2.6875rem;
     left: 0;
     position: absolute;
-    top: 44rem;
+  
     width: 33.6875rem;
     padding-left: 1rem;
   }
@@ -2924,10 +2993,30 @@
     width: 17rem;
     height: 3.13rem;
   }
+  .add-wallet-balance {
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    border-radius: 50px;
+    width: 17rem;
+    height: 3.13rem;
+    background-color: transparent;
+    color: #fff;
+  }
+  .add-wallet-balance1 {
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+    width: 17rem;
+    height: 3.13rem;
+    background-color: transparent;
+    color: #fff;
+    border-color: transparent;
+  }
   .wallet-balance {
     position: absolute;
     top: 5rem;
-    left: 1rem;
+    left: 2rem;
     font-size: 1.5rem;
     display: inline-block;
     font-family: Outfit;
@@ -2936,6 +3025,7 @@
     width: 11.56rem;
     height: 1.63rem;
   }
+   
   .rectangle-group {
     cursor: pointer;
     border: 0;

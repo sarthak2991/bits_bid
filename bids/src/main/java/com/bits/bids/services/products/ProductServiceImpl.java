@@ -61,20 +61,19 @@ public class ProductServiceImpl implements ProductsService {
 
   @Override
   public ProductListResponse getProducts(Long categoryId, Long pageNo, Long limit, Long sellerId) {
-    Pageable pageable = PageRequest.of(pageNo.intValue(), limit.intValue());
-    Page<Product> productPage = null;
-    if (Objects.nonNull(sellerId)) {
-      productPage = productsRepository.findBySellerId(sellerId, pageable);
-    } else if (Objects.nonNull(categoryId)) {
-      productPage = productsRepository.findByCategoryId(categoryId, pageable);
-    } else {
-      productPage = productsRepository.findAll(pageable);
-    }
-    List<ProductResponse> productResponses = productPage.getContent().stream()
-        .map(mapper::prepareProductResponse).collect(Collectors.toList());
-    return mapper.prepareProductResponseList(productResponses, pageNo, limit);
+  List<Product> productPage = null;
+  if (Objects.nonNull(sellerId)) {
+  productPage = productsRepository.findBySellerId(sellerId);
+  } else if (Objects.nonNull(categoryId)) {
+  log.info("{}", categoryId);
+  productPage = productsRepository.findByCategoryId(categoryId);
+  } else {
+  productPage = productsRepository.findAll();
   }
-
+  List<ProductResponse> productResponses = productPage.stream()
+  .map(mapper::prepareProductResponse).collect(Collectors.toList());
+  return mapper.prepareProductResponseList(productResponses, pageNo, limit);
+  }
   @Override
   public List<ProductResponse> searchProducts(String searchQuery) {
     if (StringUtils.isNullOrEmpty(searchQuery) || searchQuery.length() < 3) {

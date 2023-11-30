@@ -12,6 +12,9 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import Chatpage from "./Chatpage";
 import Details from "./Details";
 import Profile from "./Profile";
+import Sell from "./Sell";
+import Chatpage1 from "./Chatpage1";
+import Product from "./Product";
 
 function App (){
     return (
@@ -20,12 +23,15 @@ function App (){
             <Switch>
                 <Route exact path="/"><Login/></Route>
                 <Route path="/home"><Desktop/></Route>
-                <Route path="/item"><Desktop3/></Route>
+                <Route path="/buy"><Desktop3/></Route>
                 <Route path="/bid"><Desktop6/></Route>
                 <Route path="/payment"><Desktop5/></Route>
                 <Route path="/chat"><Chatpage/></Route>
+                <Route path="/personal"><Chatpage1/></Route>
                 <Route path="/details"><Details/></Route>
                 <Route path="/profile"><Profile/></Route>
+                <Route path="/sell"><Sell/></Route>
+                <Route path="/product"><Product/></Route>
             </Switch>
         </BrowserRouter>
        
@@ -35,4 +41,4 @@ function App (){
     
 }
 
-ReactDOM.render(<GoogleOAuthProvider clientId={process.env.REACT_APP_CLIENT_ID} ><App/></GoogleOAuthProvider>,document.getElementById('root'))
+ReactDOM.render(<GoogleOAuthProvider clientId="560353721263-nnegf6lu2gmhe40g9m9aa4hp7jqsb3ai.apps.googleusercontent.com" ><App/></GoogleOAuthProvider>,document.getElementById('root'))
