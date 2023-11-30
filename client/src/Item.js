@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { useState } from 'react'
 import search from "./assets/Search.png"
 import home from "./assets/Home.png"
 import chat from "./assets/Speech Bubble.png"
@@ -11,11 +11,41 @@ import account from "./assets/Account.png"
 import forward from "./assets/Forward.png"
 import forward1 from "./assets/Forward (2).png"
 import currency from "./assets/Group.png"
+import axios from 'axios'
 
+const images = []
 const Desktop3 = () => {
+  const [count,setCount] = useState(0) 
+  const [searchItem,setSearch] = useState('')
+  const token = localStorage.getItem('token')
+  const[suggestions,setSuggestion] = useState([])
   const productDetails = JSON.parse(localStorage.getItem('productdetails'))
+  const handleSuggestionClick = (suggestion) => {
+    setSearch(suggestion);
+    setSuggestion([]);
+  };
+  const handleSearch = (e) => {
+    e.preventDefault()
+    setSearch(e.target.value);
+    axios.get("http://localhost:8080/api/v1/products/search?name="+searchItem,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+      //console.log(res.data.result);
+      if(res.data.hasOwnProperty('result')){
+        const objectLength = Object.keys(res.data.result).length;
+        for(let i = 0;i<objectLength;i++){
+          if(!suggestions.includes(res.data.result[i].name)){
+          suggestions.push(res.data.result[i].name)}
+        }
+        
+      }})
+  }
+  
   //console.log(productDetails)
   const handleClick =()=>{window.location.href="/bid"}
+  const handleChat = ()=>{
+    localStorage.setItem('productid',productDetails.id)
+    localStorage.setItem('userid',productDetails.sellerId)
+    window.location.href = '/personal'
+  }
   return (
     <div className="itemdesktop">
     <div className="div">
@@ -39,12 +69,13 @@ const Desktop3 = () => {
       <p className="p">{productDetails.name}</p>
       <div className="overlap-group">
         <div className="rectangle-2" />
-        <img className="forwardbutton" alt="Forward" src={forward1} />
-        
+        <button className='forwardbutton' onClick={()=>{if(count<images.length){setCount(count+1)}else{setCount(0)}}}><img className="forward" alt="Forward" src={forward1}  /></button>
+      
+        {(images.length!==0)?(<img className='image' src={images[count]}/>):(<div className='image'></div>)}
         <img className="image" alt="Image" src="image-1.png" />
       </div>
       <div className="div-wrapper">
-        <button className="text-wrapper-4" >Chat with Seller</button>
+        <button className="text-wrapper-4" onClick={()=>{handleChat()}}>Chat with Seller</button>
       </div>
       <div className="add-to-cart-start-wrapper">
         <button className="add-to-cart-start" onClick={()=>{handleClick()}}>Start Bidding</button>
@@ -52,17 +83,30 @@ const Desktop3 = () => {
       <div className="group-2">
         <div className="overlap-3">
           <div className="overlap-3" >
-          <input className='search-bar' placeholder='What are you looking for?' style={{fontSize:'2rem'}}></input>
-          <img className="search" alt="Search" src={search} />
+          <input className='search-bar' value={searchItem} onChange={(e)=>{handleSearch(e)}} onKeyUp={(e)=>{if(e.key === "Enter"){ 
+           axios.get("http://localhost:8080/api/v1/products/search?name="+searchItem,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+            const products = JSON.stringify(res.data.result)
+    
+    localStorage.setItem('products',products)
+    window.location.href = "/product"
+  
+           })
+            setSearch('')}}} placeholder='What are you looking for?' style={{fontSize:'2rem'}}></input>
+          {suggestions.length > 0 && (
+        <ul className="suggestions-list">
+          {suggestions.map((suggestion, index) => (
+            <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
+              {suggestion}
+            </li>
+          ))}
+        </ul>
+      )}
+<img className="search" alt="Search" src={search} />
         </div>
           <img className="search" alt="Search" src={search} />
         </div>
         <a href='/home'><img className="home" alt="Home" src={home} /></a>
-        <img className="heart" alt="Heart" src={heart} />
-        <img className="shopping-cart" alt="Shopping cart" src={cart} />
         <a href='/chat'><img className="speech-bubble" alt="Speech bubble" src={chat} /></a>
-        <img className="euro-money" alt="Euro money" src={euro} />
-        <img className="settings" alt="Settings" src={settings} />
         <div className="account-wrapper">
           <a href='/profile'><img className="account" alt="Account" src={account} /></a>
         </div>

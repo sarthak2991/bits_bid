@@ -16,12 +16,15 @@ const Profile = () => {
     const handleClick = ()=>{
       axios.post("http://localhost:8080/api/v1/users/balance",{topUpAmount:money},{headers : {'Authorization': `Bearer ${token}`}}).then(
         (res)=>{
-          alert(res.data.result.message)
+          console.log(res.data)
+          if(res.data.result.hasOwnProperty('message')){alert(res.data.result.message)
           localStorage.setItem('balance',res.data.result.balance)
           setMoney("")
           setAdd(false)
-        }
-      ).catch(alert("some error"))
+        }}
+      ).catch((err)=>{
+      
+        alert("some error")})
     }
     const token = localStorage.getItem('token')
   return (
@@ -34,10 +37,10 @@ const Profile = () => {
       <div className="desktop-9-child" />
      
       <img className="desktop-9-inner" alt="" src={account} />
-      <input className="search-bar-4" type="text" placeholder="Name" value={name} />
-      <input className="search-bar-5" type="text" placeholder="Hostel Name" value={hostel}/>
-      <input className="search-bar-6" type="text" placeholder="Email ID" value={email} />
-      <input className="search-bar-7" type="text" placeholder="Phone NO" value={phone}/>
+      <input className="search-bar-4" disabled={true} type="text" placeholder="Name" value={name} />
+      <input className="search-bar-5" disabled={true} type="text" placeholder="Hostel Name" value={hostel}/>
+      <input className="search-bar-6" disabled={true} type="text" placeholder="Email ID" value={email} />
+      <input className="search-bar-7" type="text" disabled={true} placeholder="Phone NO" value={phone}/>
    
       <div className="rectangle-parent">
         <div className="group-child" />
@@ -47,11 +50,11 @@ const Profile = () => {
       <b className="your-profile">Your Profile</b>
       <div className="rectangle-group">
         <div className="group-item" />
-       {(add)?(<><input className="add-wallet-balance" placeholder="Enter money to add" value={money} onChange={(e)=>{setMoney(e.target.value)}}></input><button onClick={()=>{handleClick()}} className="add-wallet-balance1">Submit</button></>):(<button className="add-wallet-balance" onClick={()=>{setAdd(true)}}> <b >Wallet Balance: {balance}</b></button>)} 
+       {(add)?(<><input className="add-wallet-balance" placeholder="Enter money to add" value={money} onChange={(e)=>{setMoney(e.target.value)}}></input><button onClick={()=>{handleClick()}} className="add-wallet-balance1">Add</button></>):(<button className="add-wallet-balance" onClick={()=>{setAdd(true)}}> <b >Wallet Balance: {balance}</b></button>)} 
       </div>
       <div className="rectangle-container">
         <div className="group-item" />
-        <b className="your-orders">Your Orders</b>
+        <a href="/order"><b className="your-orders">Your Orders</b></a>
       </div>
     </div>
   );

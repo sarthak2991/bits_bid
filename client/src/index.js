@@ -15,6 +15,7 @@ import Profile from "./Profile";
 import Sell from "./Sell";
 import Chatpage1 from "./Chatpage1";
 import Product from "./Product";
+import Order from "./Order";
 
 function App (){
     return (
@@ -32,6 +33,7 @@ function App (){
                 <Route path="/profile"><Profile/></Route>
                 <Route path="/sell"><Sell/></Route>
                 <Route path="/product"><Product/></Route>
+                <Route path="/order"><Order/></Route>
             </Switch>
         </BrowserRouter>
        

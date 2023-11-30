@@ -18,6 +18,27 @@ import axios from 'axios'
 const images = []
     
 const Sell = () => {
+  const [searchItem,setSearch] = useState('')
+  const[suggestions,setSuggestion] = useState([])
+  const handleSearch = (e) => {
+    e.preventDefault()
+    setSearch(e.target.value);
+    axios.get("http://localhost:8080/api/v1/products/search?name="+searchItem,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+      //console.log(res.data.result);
+      if(res.data.hasOwnProperty('result')){
+        const objectLength = Object.keys(res.data.result).length;
+        for(let i = 0;i<objectLength;i++){
+          if(!suggestions.includes(res.data.result[i].name)){
+          suggestions.push(res.data.result[i].name)}
+        }
+        
+      }})
+  }
+  
+  const handleSuggestionClick = (suggestion) => {
+    setSearch(suggestion);
+    setSuggestion([]);
+  };
     const [count,setCount] = useState(0) 
    const [categoryId,setCategory] = useState(0) 
    const [description,setDescription] = useState('')
@@ -101,7 +122,7 @@ const Sell = () => {
         <button className='upload' onClick={(e)=>{handleUpload(e)}}  style={{'height':'2rem'}}>Upload</button>
       </div>
       <div className="add-to-cart-start-wrapper">
-        <button className="add-to-cart-start" onClick={()=>{if(created!==""){alert("bidding started")}else{alert("please fill all details")}}}>Start Bidding</button>
+        <button className="add-to-cart-start" onClick={()=>{if(created!==""){alert("bidding started")}else{alert("please fill all details")}}}>Allow Bidding</button>
       </div>
       <div className="div-wrapper">
         <button className="text-wrapper-4" >Stop Bidding</button>
@@ -110,17 +131,30 @@ const Sell = () => {
       <div className="group-2">
         <div className="overlap-3">
           <div className="overlap-3" >
-          <input className='search-bar' placeholder='What are you looking for?' style={{fontSize:'2rem'}}></input>
-          <img className="search" alt="Search" src={search} />
+          <input className='search-bar' value={searchItem} onChange={(e)=>{handleSearch(e)}} onKeyUp={(e)=>{if(e.key === "Enter"){ 
+           axios.get("http://localhost:8080/api/v1/products/search?name="+searchItem,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+            const products = JSON.stringify(res.data.result)
+    
+    localStorage.setItem('products',products)
+    window.location.href = "/product"
+  
+           })
+            setSearch('')}}} placeholder='What are you looking for?' style={{fontSize:'2rem'}}></input>
+          {suggestions.length > 0 && (
+        <ul className="suggestions-list">
+          {suggestions.map((suggestion, index) => (
+            <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
+              {suggestion}
+            </li>
+          ))}
+        </ul>
+      )}
+<img className="search" alt="Search" src={search} />
         </div>
           <img className="search" alt="Search" src={search} />
         </div>
         <a href='/home'><img className="home" alt="Home" src={home} /></a>
-        <img className="heart" alt="Heart" src={heart} />
-        <img className="shopping-cart" alt="Shopping cart" src={cart} />
         <a href='/chat'><img className="speech-bubble" alt="Speech bubble" src={chat} /></a>
-        <img className="euro-money" alt="Euro money" src={euro} />
-        <img className="settings" alt="Settings" src={settings} />
         <div className="account-wrapper">
           <a href='/profile'><img className="account" alt="Account" src={account} /></a>
         </div>

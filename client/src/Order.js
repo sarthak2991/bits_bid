@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "axios"
 
 import stationary from "./assets/stationary.png"
@@ -19,8 +19,15 @@ import euro from "./assets/Euro Money.png"
 import settings from "./assets/Settings.png"
 import account from "./assets/Account.png"
 
-const Product = () => {
+const Order = () => {
   const[suggestions,setSuggestion] = useState([])
+  useEffect(()=>{axios.get("http://localhost:8080/api/v1/users/profile",{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+  
+        setChoice(res.data.result.bids)
+        
+    }
+
+  )},[])
   const handleSearch = (e) => {
     e.preventDefault()
     setSearch(e.target.value);
@@ -38,7 +45,7 @@ const Product = () => {
   const loggedin = localStorage.getItem("loggedin")
   const token = localStorage.getItem('token')
   const [searchItem,setSearch] = useState('')
-  const choices = JSON.parse(localStorage.getItem('products'))
+  const [choices,setChoice]=useState([]) 
   const handleSuggestionClick = (suggestion) => {
     setSearch(suggestion);
     setSuggestion([]);
@@ -49,9 +56,25 @@ const Product = () => {
   axios.get("http://localhost:8080/api/v1/products/"+productId,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
    const productDetails = JSON.stringify(res.data.result)
 localStorage.setItem('productdetails',productDetails)
-window.location.href = "/buy"
+console.log(choices[0].productId)
+for(let i=0;i<choices.length;i++){
+  
+    if(choices[i].productId === parseInt(productId) && choices[i].isFrozen){
+      localStorage.setItem("bidId",choices[i].id)
+      localStorage.setItem('bidAmount',choices[i].bidAmount)
+        window.location.href="/payment"
+        break
+    }
+    else{
+        window.location.href = "/bid"
+    }
+    
+}
+
 })
   }
+
+ 
   return (
     <>{
       (loggedin)?(
@@ -60,15 +83,15 @@ window.location.href = "/buy"
       
     <div className="homediv">
    {(choices.length === 0)?(<div className='homeoverlap' style={{'fontSize':'2rem'}}>No results to display</div>):(<>{choices.map((index,key)=>{
-        
+     
         return (<button onClick={(e)=>{handleClick(e)}}   key={key} className="homeoverlap">
         <div className="homegroup">
           <div className="homeoverlap-group">
             <div className="homerectangle" />
-            <img className="homeimg" alt={index.id} src={index.img_urls} />
+            <img className="homeimg" alt={index.productId} src={index.img_urls} />
           </div>
         </div>
-        <div className="hometext-wrapper">{index.name} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price:{index.price}</div>
+        <div  className="hometext-wrapper">{(index.isFrozen)?(<>Sold</>):(<>Not Sold</>)} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bid:{index.bidAmount}</div>
       </button>)})}
       </>)}
       
@@ -108,4 +131,4 @@ window.location.href = "/buy"
  
 }
 
-export default Product
+export default Order
