@@ -42,6 +42,7 @@ const Order = () => {
         
       }})
   }
+  const id= localStorage.getItem('id')
   const loggedin = localStorage.getItem("loggedin")
   const token = localStorage.getItem('token')
   const [searchItem,setSearch] = useState('')
@@ -91,7 +92,8 @@ for(let i=0;i<choices.length;i++){
             <img className="homeimg" alt={index.productId} src={index.img_urls} />
           </div>
         </div>
-        <div  className="hometext-wrapper">{(index.isFrozen)?(<>Sold</>):(<>Not Sold</>)} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bid:{index.bidAmount}</div>
+        
+        <div  className="hometext-wrapper">{(index.isFrozen)?(<>{(index.sellerId === parseInt(id))?(<>Sold</>):(<>Buy</>)}</>):(<>{(index.sellerId === parseInt(id))?(<>Not Sold</>):(<>Bid</>)}</>)} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bid:{index.bidAmount}</div>
       </button>)})}
       </>)}
       

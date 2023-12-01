@@ -54,9 +54,12 @@ const Profile = () => {
       </div>
       <div className="rectangle-container">
         <div className="group-item" />
-        <a href="/order"><b className="your-orders">Your Orders</b></a>
+        <a href="/order"><b className="your-orders">Your Bids</b></a>
       </div>
+      
+      
     </div>
+    
   );
 };
 

@@ -49,7 +49,7 @@ public class BidSettlementJob {
     products.forEach(product -> {
       long createAt = product.getCreatedAt();
       long duration = System.currentTimeMillis() - bidActiveDuration;
-      if (createAt < duration) {
+      if (createAt > duration) {
         log.info("Bid settlement period haven't crossed skipping the product");
         return;
       }

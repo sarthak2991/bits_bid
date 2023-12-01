@@ -77,6 +77,8 @@ const Sell = () => {
         
     
         }
+
+        
   return (
     <div className="itemdesktop">
     <div className="div">
@@ -123,9 +125,6 @@ const Sell = () => {
       </div>
       <div className="add-to-cart-start-wrapper">
         <button className="add-to-cart-start" onClick={()=>{if(created!==""){alert("bidding started")}else{alert("please fill all details")}}}>Allow Bidding</button>
-      </div>
-      <div className="div-wrapper">
-        <button className="text-wrapper-4" >Stop Bidding</button>
       </div>
       
       <div className="group-2">

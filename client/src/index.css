@@ -3058,6 +3058,18 @@
       width: 8.81rem;
       height: 1.63rem;
     }
+    .your-orders-1 {
+      position: absolute;
+      top: 5.3rem;
+      left: 9rem;
+      font-size: 1.5rem;
+      display: inline-block;
+      font-family: Outfit;
+      color: #fff;
+      text-align: left;
+      width: 8.81rem;
+      height: 1.63rem;
+    }
     .rectangle-container {
       cursor: pointer;
       border: 0;

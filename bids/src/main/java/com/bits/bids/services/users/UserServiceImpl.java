@@ -13,6 +13,8 @@ import com.bits.bids.models.responses.BalanceTopUpResponse;
 import com.bits.bids.models.responses.UserSignInResponse;
 import com.bits.bids.repository.BidRepository;
 import com.bits.bids.repository.UserRepository;
+import com.bits.bids.utils.CollectionUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -82,10 +85,10 @@ public class UserServiceImpl implements UserService {
     requestedUser.orElseThrow(() -> {
       throw new ApiExecutionException(HttpResponseMessage.USER_NOT_FOUND);
     });
-    Bid bid = bidRepository.findByBidderIdAndSellerIdAndIsFrozen(user.getId(), userId, Boolean.TRUE)
-        .orElseThrow(() -> {
-          throw new ApiExecutionException(HttpResponseMessage.CANT_VIEW_BUYER_INFO);
-        });
+    List<Bid> bids = bidRepository.findByBidderIdAndSellerIdAndIsFrozen(user.getId(), userId, Boolean.TRUE);
+if (CollectionUtils.isEmpty(bids)){
+throw new ApiExecutionException(HttpResponseMessage.CANT_VIEW_BUYER_INFO);
+};
     return requestedUser.get();
   }
 
