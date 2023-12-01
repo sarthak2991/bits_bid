@@ -20,6 +20,6 @@ public interface UserService {
 
   BalanceTopUpResponse balanceTopUp(BalanceTopUpRequest balanceTopUpRequest, User user);
 
-    String uploadProfilePicture(User user,
-                                MultipartFile profilePicture) throws IOException;
+  String uploadProfilePicture(User user,
+  String url, MultipartFile profilePicture) throws IOException;
 }

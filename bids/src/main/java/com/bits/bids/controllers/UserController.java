@@ -72,13 +72,14 @@ public class UserController {
   }
 
   @PostMapping(value = "/profile_pic", consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
-          produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<ApiResponse<?>> uploadProfilePic(HttpServletRequest request,
-                                                         @RequestParam("pic") MultipartFile pic) throws IOException {
-    final User user = authService.verifyAccessToken(request).getUser();
-    ApiResponse<String> apiResponse = new ApiResponse<>();
-    apiResponse.setResult(userService.uploadProfilePicture(user, pic));
-    return new ResponseEntity<>(apiResponse, HttpStatus.OK);
-  }
+produces = MediaType.APPLICATION_JSON_VALUE)
+public ResponseEntity<ApiResponse<?>> uploadProfilePic(HttpServletRequest request,
+@RequestParam(value = "pic", required = false) MultipartFile pic,
+@RequestParam(value = "url",required = false) String url) throws IOException {
+final User user = authService.verifyAccessToken(request).getUser();
+ApiResponse<String> apiResponse = new ApiResponse<>();
+apiResponse.setResult(userService.uploadProfilePicture(user, url, pic));
+return new ResponseEntity<>(apiResponse, HttpStatus.OK);
+}
 
 }

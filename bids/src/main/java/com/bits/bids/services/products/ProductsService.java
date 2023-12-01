@@ -19,6 +19,6 @@ public interface ProductsService {
 
   Product createProduct(CreateProductRequest createProductRequest, User user);
 
-    String uploadProductPicture(Long productId, User user,
-                                MultipartFile profilePicture) throws IOException;
+  String uploadProductPicture(Long productId, String url, User user,
+  MultipartFile profilePicture) throws IOException;
 }

@@ -75,12 +75,13 @@ public class ProductsController {
   }
 
   @PostMapping(value = "/{productId}/pic", consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
-          produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<ApiResponse<?>> uploadProfilePic(HttpServletRequest request,
-                                                         @RequestParam("pic") MultipartFile pic, @PathVariable Long productId) throws IOException {
-    final User user = authService.verifyAccessToken(request).getUser();
-    ApiResponse<String> apiResponse = new ApiResponse<>();
-    apiResponse.setResult(productsService.uploadProductPicture(productId, user, pic));
-    return new ResponseEntity<>(apiResponse, HttpStatus.OK);
-  }
+produces = MediaType.APPLICATION_JSON_VALUE)
+public ResponseEntity<ApiResponse<?>> uploadProfilePic(HttpServletRequest request,
+@RequestParam(value = "pic", required = false) MultipartFile pic, @RequestParam("url") String url,
+@PathVariable Long productId) throws IOException {
+final User user = authService.verifyAccessToken(request).getUser();
+ApiResponse<String> apiResponse = new ApiResponse<>();
+apiResponse.setResult(productsService.uploadProductPicture(productId, url, user, pic));
+return new ResponseEntity<>(apiResponse, HttpStatus.OK);
+}
 }

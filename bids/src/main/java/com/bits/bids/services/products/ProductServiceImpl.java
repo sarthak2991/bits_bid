@@ -96,34 +96,38 @@ public class ProductServiceImpl implements ProductsService {
   }
 
   @Override
-  public String uploadProductPicture(Long productId, User user,
-                                     MultipartFile profilePicture) throws IOException {
-    Product product = productsRepository.findByIdAndSellerId(productId, user.getId()).orElseThrow(() -> {
-      return new ApiExecutionException(HttpResponseMessage.NO_SUCH_PRODUCT);
-    });
-    String profilePicFileName = profilePicture.getOriginalFilename();
-    if (profilePicture.isEmpty() || StringUtils.isNullOrEmpty(profilePicFileName)) {
-      throw new ApiExecutionException(HttpResponseMessage.IMAGE_INVALID);
-    }
-    if (!profilePicFileName.contains(".png") && !profilePicFileName.contains(".jpg")
-            && !profilePicFileName.contains(".jpeg")) {
-      throw new ApiExecutionException(HttpResponseMessage.IMAGE_FORMAT_NOT_ALLOWED);
-    }
-    String profilePicName =
-            "product" +StringUtils.generateRandomString() + "_" + productId + "." + "jpeg";
-    Path profilePicturePath =
-            Paths.get(imgStorageLocation, profilePicName);
-    Files.write(profilePicturePath, profilePicture.getBytes());
-    String imgUrl = imgBaseUrl + profilePicName;
-    log.info("{}", product.getImgUrls());
-    List<String> urls = CollectionUtils.convertCsvToList(product.getImgUrls());
-    log.info("{}", urls);
-    if (urls.size() >= 3){
-      throw new ApiExecutionException("Only 3 images allowed");
-    }
-    urls.add(imgUrl);
-
-    productsRepository.updateImgUrlById(org.springframework.util.StringUtils.collectionToCommaDelimitedString(urls), productId);
-    return imgUrl;
-  }
+public String uploadProductPicture(Long productId, String url, User user,
+MultipartFile profilePicture) throws IOException {
+Product product = productsRepository.findByIdAndSellerId(productId, user.getId()).orElseThrow(() -> {
+return new ApiExecutionException(HttpResponseMessage.NO_SUCH_PRODUCT);
+});
+String imgUrl = null;
+if (StringUtils.isNullOrEmpty(url)){
+String profilePicFileName = profilePicture.getOriginalFilename();
+if (profilePicture.isEmpty() || StringUtils.isNullOrEmpty(profilePicFileName)) {
+throw new ApiExecutionException(HttpResponseMessage.IMAGE_INVALID);
 }
+if (!profilePicFileName.contains(".png") && !profilePicFileName.contains(".jpg")
+&& !profilePicFileName.contains(".jpeg")) {
+throw new ApiExecutionException(HttpResponseMessage.IMAGE_FORMAT_NOT_ALLOWED);
+}
+String profilePicName =
+"product" +StringUtils.generateRandomString() + "_" + productId + "." + "jpeg";
+Path profilePicturePath =
+Paths.get(imgStorageLocation, profilePicName);
+Files.write(profilePicturePath, profilePicture.getBytes());
+imgUrl = imgBaseUrl + profilePicName;
+} else {
+imgUrl = url;
+}
+log.info("{}", product.getImgUrls());
+List<String> urls = CollectionUtils.convertCsvToList(product.getImgUrls());
+log.info("{}", urls);
+if (urls.size() >= 3){
+throw new ApiExecutionException("Only 3 images allowed");
+}
+urls.add(imgUrl);
+
+productsRepository.updateImgUrlById(org.springframework.util.StringUtils.collectionToCommaDelimitedString(urls), productId);
+return imgUrl;
+}}

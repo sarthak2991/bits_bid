@@ -14,6 +14,7 @@ import com.bits.bids.models.responses.UserSignInResponse;
 import com.bits.bids.repository.BidRepository;
 import com.bits.bids.repository.UserRepository;
 import com.bits.bids.utils.CollectionUtils;
+import com.bits.bids.utils.StringUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -93,24 +94,28 @@ throw new ApiExecutionException(HttpResponseMessage.CANT_VIEW_BUYER_INFO);
   }
 
   @Override
-  public String uploadProfilePicture(User user,
-                                     MultipartFile profilePicture) throws IOException {
-      String profilePicFileName = profilePicture.getOriginalFilename();
-      if (profilePicture.isEmpty()) {
-        throw new ApiExecutionException(HttpResponseMessage.IMAGE_INVALID);
-      }
-      if (!profilePicFileName.contains(".png") && !profilePicFileName.contains(".jpg")
-              && !profilePicFileName.contains(".jpeg")) {
-        throw new ApiExecutionException(HttpResponseMessage.IMAGE_FORMAT_NOT_ALLOWED);
-      }
-      String profilePicName =
-              "users" + "_" + user.getId() + "." + "jpeg";
-      Path profilePicturePath =
-              Paths.get(imgStorageLocation, profilePicName);
-      Files.write(profilePicturePath, profilePicture.getBytes());
-      String imgUrl = imgBaseUrl + profilePicName;
-      userRepository.updateImgUrlById(imgUrl, user.getId());
-      return imgUrl;
-  }
+public String uploadProfilePicture(User user, String url,
+MultipartFile profilePicture) throws IOException {
+String imgUrl = null;
+if (StringUtils.isNullOrEmpty(url)){
+String profilePicFileName = profilePicture.getOriginalFilename();
+if (profilePicture.isEmpty()) {
+throw new ApiExecutionException(HttpResponseMessage.IMAGE_INVALID);
 }
+if (!profilePicFileName.contains(".png") && !profilePicFileName.contains(".jpg")
+&& !profilePicFileName.contains(".jpeg")) {
+throw new ApiExecutionException(HttpResponseMessage.IMAGE_FORMAT_NOT_ALLOWED);
+}
+String profilePicName =
+"users" + "_" + user.getId() + "." + "jpeg";
+Path profilePicturePath =
+Paths.get(imgStorageLocation, profilePicName);
+Files.write(profilePicturePath, profilePicture.getBytes());
+imgUrl = imgBaseUrl + profilePicName;
+} else {
+imgUrl = url;
+}
+userRepository.updateImgUrlById(imgUrl, user.getId());
+return imgUrl;
+}}
 
