@@ -24,7 +24,7 @@ const Product = () => {
   const handleSearch = (e) => {
     e.preventDefault()
     setSearch(e.target.value);
-    axios.get("http://localhost:8080/api/v1/products/search?name="+searchItem,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+    axios.get("https://big-omc1.onrender.com/api/v1/products/search?name="+searchItem,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
       //console.log(res.data.result);
       if(res.data.hasOwnProperty('result')){
         const objectLength = Object.keys(res.data.result).length;
@@ -46,7 +46,7 @@ const Product = () => {
   const handleClick =  (e) => {e.preventDefault();
     const productId = e.target.alt
   //console.log(productId)
-  axios.get("http://localhost:8080/api/v1/products/"+productId,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+  axios.get("https://big-omc1.onrender.com/api/v1/products/"+productId,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
    const productDetails = JSON.stringify(res.data.result)
 localStorage.setItem('productdetails',productDetails)
 window.location.href = "/buy"
@@ -76,7 +76,7 @@ window.location.href = "/buy"
       <div className="group-2">
         <div className="overlap-3" >
         <input className='search-bar' value={searchItem} onChange={(e)=>{handleSearch(e)}} onKeyUp={(e)=>{if(e.key === "Enter"){ 
-           axios.get("http://localhost:8080/api/v1/products/search?name="+searchItem,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+           axios.get("https://big-omc1.onrender.com/api/v1/products/search?name="+searchItem,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
             const products = JSON.stringify(res.data.result)
     
     localStorage.setItem('products',products)

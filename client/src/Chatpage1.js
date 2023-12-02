@@ -20,7 +20,7 @@ const Chatpage1 = () => {
   const handleSearch = (e) => {
     e.preventDefault()
     setSearch(e.target.value);
-    axios.get("http://localhost:8080/api/v1/products/search?name="+searchItem,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+    axios.get("https://big-omc1.onrender.com/api/v1/products/search?name="+searchItem,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
       //console.log(res.data.result);
       if(res.data.hasOwnProperty('result')){
         const objectLength = Object.keys(res.data.result).length;
@@ -42,7 +42,7 @@ const Chatpage1 = () => {
   const sellerid = localStorage.getItem('userid')
 const userid = localStorage.getItem('id')
 
-  useEffect(()=>{axios.get("http://localhost:8080/api/v1/chat/"+productId+'/'+sellerid+'/get',{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+  useEffect(()=>{axios.get("https://big-omc1.onrender.com/api/v1/chat/"+productId+'/'+sellerid+'/get',{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
     if(res.data.hasOwnProperty('result')){
        setChathistory(res.data.result)
       }
@@ -76,7 +76,7 @@ const userid = localStorage.getItem('id')
         
         </>
        )})}
-       <input className="text-wrapper-6" value={message} onKeyDown={(e)=>{if(e.key === "Enter"){axios.post("http://localhost:8080/api/v1/chat/send",{'to':sellerid,productId,'msg':message},{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+       <input className="text-wrapper-6" value={message} onKeyDown={(e)=>{if(e.key === "Enter"){axios.post("https://big-omc1.onrender.com/api/v1/chat/send",{'to':sellerid,productId,'msg':message},{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
         alert(res.data.result)
         setMessage('')
        })}}} onChange={(e)=>{setMessage(e.target.value)}} placeholder='Type..'></input>
@@ -94,7 +94,7 @@ const userid = localStorage.getItem('id')
           <div className="group-6">
           <div className="overlap-3" >
           <input className='search-bar' value={searchItem} onChange={(e)=>{handleSearch(e)}} onKeyUp={(e)=>{if(e.key === "Enter"){ 
-           axios.get("http://localhost:8080/api/v1/products/search?name="+searchItem,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+           axios.get("https://big-omc1.onrender.com/api/v1/products/search?name="+searchItem,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
             const products = JSON.stringify(res.data.result)
     
     localStorage.setItem('products',products)

@@ -32,9 +32,9 @@ const Login = () => {
             localStorage.setItem("loggedin",loggedin)
             const password = "1"
             
-             axios.post("http://localhost:8080/api/v1/users/sign_in",{username,password}).then((res)=>{
+             axios.post("https://big-omc1.onrender.com/api/v1/users/sign_in",{username,password}).then((res)=>{
               if(res.data.hasOwnProperty('msg')){
-                axios.post("http://localhost:8080/api/v1/users/sign_up",{email,username,name,password}).then((res)=>{
+                axios.post("https://big-omc1.onrender.com/api/v1/users/sign_up",{email,username,name,password}).then((res)=>{
               if(res.data.hasOwnProperty('result')){
                 window.location.href = "/"
               }

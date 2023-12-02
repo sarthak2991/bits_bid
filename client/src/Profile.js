@@ -14,7 +14,7 @@ const Profile = () => {
     const [add,setAdd] = useState(false)
     const[money,setMoney] = useState("")
     const handleClick = ()=>{
-      axios.post("http://localhost:8080/api/v1/users/balance",{topUpAmount:money},{headers : {'Authorization': `Bearer ${token}`}}).then(
+      axios.post("https://big-omc1.onrender.com/api/v1/users/balance",{topUpAmount:money},{headers : {'Authorization': `Bearer ${token}`}}).then(
         (res)=>{
           console.log(res.data)
           if(res.data.result.hasOwnProperty('message')){alert(res.data.result.message)

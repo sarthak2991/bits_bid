@@ -12,7 +12,7 @@ const Desktop5 = () => {
     const bidId = localStorage.getItem('bidId')
     const [seller,setSeller] = useState([])
     useEffect(()=>{
-      axios.get("http://localhost:8080/api/v1/users/profile?id="+productDetails.sellerId,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+      axios.get("https://big-omc1.onrender.com/api/v1/users/profile?id="+productDetails.sellerId,{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
         if(res.data.hasOwnProperty('msg')){
           alert(res.data.msg)
           window.location.href = "/order"
@@ -24,11 +24,11 @@ const Desktop5 = () => {
     },[])
     const handleClick = () => {
    
-      axios.post("http://localhost:8080/api/v1/bids/"+bidId+"/buyout",{},{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
+      axios.post("https://big-omc1.onrender.com/api/v1/bids/"+bidId+"/buyout",{},{headers : {'Authorization': `Bearer ${token}`}}).then((res)=>{
        
       if(res.data.hasOwnProperty('result')){alert(res.data.result)} else{alert(res.data.msg)}}  ) 
      
-        axios.get("http://localhost:8080/api/v1/users/profile",{headers : {'Authorization': `Bearer ${token}`}}).then(
+        axios.get("https://big-omc1.onrender.com/api/v1/users/profile",{headers : {'Authorization': `Bearer ${token}`}}).then(
           (res)=>{
             localStorage.setItem('balance',res.data.result.balance)
           }

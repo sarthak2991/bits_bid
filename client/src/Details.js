@@ -14,7 +14,7 @@ const Details = () => {
         phone No : <input placeholder='enter your phone number' onChange={(e)=>{setPhone(e.target.value)}}/><br/>
         <button onClick={()=>{
             console.log(typeof(phone))
-            axios.post("http://localhost:8080/api/v1/users/sign_up",{email,username,contactNo,name,password,hostel}).then((res)=>{
+            axios.post("https://big-omc1.onrender.com/api/v1/users/sign_up",{email,username,contactNo,name,password,hostel}).then((res)=>{
              if(res.data.hasOwnProperty('result')){
                 alert("sign up successfull")
                 window.location.href = "/"
