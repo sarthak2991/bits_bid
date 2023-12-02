@@ -45,6 +45,8 @@ const Sell = () => {
    const [name,setName] = useState('')
    const [price,setPrice] = useState(0)
    const id = localStorage.getItem('id')
+   const [image,setimage] = useState('')
+ 
    const status = 0
    const [created,setCreated] = useState('') 
    const token = localStorage.getItem('token')
@@ -67,14 +69,22 @@ const Sell = () => {
     setSelectedOption(event.target.value);
   };
     function handleChange(e) {
-        e.preventDefault()
-        //e.target.files.forEach(myFunction)
-        const objectLength = Object.keys(e.target.files).length;
-        for(let i = 0;i<objectLength;i++){
-            //console.log(e.target.files[i])
-            images.push(URL.createObjectURL(e.target.files[i]))
-        }
-        
+      e.preventDefault()
+      //e.target.files.forEach(myFunction)
+      // const objectLength = Object.keys(e.target.files).length;
+      // for(let i = 0;i<objectLength;i++){
+      //     console.log(URL.createObjectURL(e.target.files[i]))
+      //     images.push(URL.createObjectURL(e.target.files[i]))
+      // }
+      const data =new FormData();
+      data.append("file",e.target.files[0])
+      data.append("upload_preset","ahx6ry5t")
+      data.append("cloud_name","dont5y4nd")
+      fetch("https://api.cloudinary.com/v1_1/dont5y4nd/image/upload",{
+        method:"post",
+        body: data
+      }).then((res)=>res.json()).then((data)=>{setimage(data.url)}).catch((err)=>{console.log(err)});    
+       
     
         }
 

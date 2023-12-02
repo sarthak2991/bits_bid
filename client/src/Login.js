@@ -74,7 +74,7 @@ const Login = () => {
 
   });
   return ( <div className="desktop">
-    {localStorage.clear()}
+   
   <div className="overlap-wrapper">
     <div className="overlap">
       <div className="overlap-group">
